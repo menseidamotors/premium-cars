@@ -284,3 +284,55 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.car-card').forEach(card => {
   observer.observe(card);
 });
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  body.classList.add('dark');
+  themeToggle.innerText = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark');
+  
+  if (body.classList.contains('dark')) {
+    localStorage.setItem('theme', 'dark');
+    themeToggle.innerText = '☀️';
+  } else {
+    localStorage.setItem('theme', 'light');
+    themeToggle.innerText = '🌙';
+  }
+});
+
+function searchCars() {
+  const input = document.getElementById('searchInput');
+  const filter = input.value.toLowerCase();
+  const cars = document.querySelectorAll('.car-card');
+
+  cars.forEach(car => {
+    const carName = car.querySelector('h3').innerText.toLowerCase();
+    const carDesc = car.querySelector('p').innerText.toLowerCase();
+    
+    if (carName.includes(filter) || carDesc.includes(filter)) {
+      car.classList.remove('hidden');
+    } else {
+      car.classList.add('hidden');
+    }
+  });
+}
+
+document.getElementById('alertForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const brand = document.getElementById('alertBrand').value;
+  const type = document.getElementById('alertType').value;
+  const budget = document.getElementById('alertBudget').value;
+  const whatsapp = document.getElementById('alertWhatsapp').value;
+  
+  const message = `Hi MENSEI DA MOTORS, I want alerts for: ${brand} ${type} under GH₵${budget}. My number: ${whatsapp}`;
+  const url = `https://wa.me/233591046079?text=${encodeURIComponent(message)}`;
+  
+  window.open(url, '_blank');
+  document.getElementById('alertMsg').innerText = "Opening WhatsApp... We'll contact you!";
+  this.reset();
+});
