@@ -550,30 +550,31 @@ font-size: 28px;
 .site-header .motto {  font-size: 12px;
   margin: 3px 0 0 0; }
 
- @media (max-width: 600px) {
-  .site-header {
-    padding: 6px 15px !important;
-  }
+@media (max-width: 600px) {
+  .site-header { padding: 5px 12px !important; }
+  
   .site-header h1 { 
-    font-size: 18px; 
-    line-height: 1.2;
+    font-size: 16px !important; 
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
   }
+  
   .site-header .motto { 
-    font-size: 9px; 
-    margin: 2px 0 0 0;
+    font-size: 8px !important; 
+    margin: 1px 0 0 0 !important;
   }
+  
   .header-actions { 
-    flex-direction: row !important; 
-    gap: 8px; 
-    margin-top: 6px;
+    gap: 6px !important; 
+    margin-top: 5px !important;
   }
+  
   .header-actions a, .header-actions button {
-    padding: 6px 10px !important;
-    font-size: 11px !important;
-    width: auto !important;
-    display: inline-flex !important;
+    padding: 5px 8px !important;
+    font-size: 10px !important;
   }
+  
   main.container {
-    padding-top: 70px !important;
+    padding-top: 60px !important;
   }
 }
