@@ -25,6 +25,19 @@
       <a class="btn whatsapp" id="whatsapp-link" href="https://wa.me/233591046079" target="_blank" rel="noopener">
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /> WhatsApp
       </a>
+
+       <button id="themeToggle" class="theme-btn">🌙</button>
+    
+  </div>
+</header>
+
+<section class="search-section">
+  <input type="text" id="searchInput" placeholder="Search cars... e.g. Honda, Toyota, SUV" onkeyup="searchCars()">
+</section>
+
+<div class="page-big"></div>
+
+
       <button id="open-cart" class="btn primary">Cart <span id="cart-count">0</span></button>
     </div>
   </header>
@@ -34,13 +47,13 @@
 
       <div class="luxury-media">
         <img id="featured-car-img"
-             src="HONDA-CIVIC.jpeg"
+             src="Block.jpeg"
              alt="Featured luxury car">
         <div class="luxury-overlay"></div>
       </div>
       <div class="luxury-content">
         <div class="badge">FEATURED</div>
-        <h2 class="luxury-title">HONDA-CIVIC — Elegance Redefined</h2>
+        <h2 class="luxury-title">HOME OF QUALITY AND AFFORDABLE CARS — Elegance Redefined</h2>
         <p class="luxury-sub">Impeccable inner and outer condition. Experience luxury, comfort and prestige.</p>
         <div class="luxury-ctas">
           <button class="btn primary" id="view-featured">View Details</button>
@@ -141,6 +154,20 @@
   </div>
 </section>
   </main>
+
+  <section class="alert-section">
+  <h2>🔔 Get Alerts for New Arrivals</h2>
+  <p>Tell us what you want and we'll WhatsApp you first</p>
+  <form id="alertForm">
+    <input type="text" id="alertBrand" placeholder="Brand: Toyota, Honda..." required>
+    <input type="text" id="alertType" placeholder="Type: SUV, Sedan..." required>
+    <input type="number" id="alertBudget" placeholder="Max Budget: GHC" required>
+    <input type="tel" id="alertWhatsapp" placeholder="Your WhatsApp Number" required>
+    <input type="location" id="alertLocation" placeholder="Location: Kumasi, Accra,Prestea.." required>
+    <button type="submit">Notify Me</button>
+  </form>
+  <p id="alertMsg"></p>
+</section>
 
   <footer class="site-footer">
     <p class="slogan">DRIVE WITH CONFIDENCE</p>
