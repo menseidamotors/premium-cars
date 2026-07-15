@@ -124,15 +124,19 @@
     </section>
 
 <section id="car-list" class="car-section">
+  <section class="featured">
+  <h2>🔥 FEATURED DEALS</h2>
+  <p>Our hottest cars this week</p>
+  <div id="featured-grid" class="featured-grid"></div>
+</section>
   <h2>OUR AVAILABLE CARS</h2>
   <div class="car-grid"></div>
 </section>
 
    <section id="cart" class="cart-panel" aria-live="polite">
-  <h2>Your Cart (<span id="cart-count">0</span>)</h2>
   <div id="cart-items">Your cart is empty.</div>
   <div class="cart-actions">
-    <button id="checkout" class="btn primary">Contact Dealer to Purchase</button>
+    <button id="checkout" class="btn primary" onclick="checkoutWhatsApp()">Contact Dealer to Purchase</button>
     <button class="btn clear-btn" onclick="clearCart()">Clear Cart</button>
   </div>
 </section>
