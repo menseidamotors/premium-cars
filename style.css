@@ -60,15 +60,15 @@ body{
 .site-header {
   position: fixed !important;
   top: 0 !important;
-  left: 0 !important;
+  left:- 0 !important;
   width: 100% !important;
   z-index: 9999 !important;
   background: var(--card) !important;
-  padding: 20px 30px !important;
+  padding: 15px 25px !important;
 }
 
 body {
-  padding-top: 250px !important;
+  padding-top: 400px !important;
 }
 
 .search-section {
@@ -82,8 +82,8 @@ body {
 .search-section input[type="search"] {
   width: 80px !important;
   max-width: 600px !important;
-  padding: 14px 20px !important;
-  font-size: 16px !important;
+  padding: 18px 25px !important;
+  font-size: 18px !important;
   border-radius: 12px 8px !important;
   border: 2px solid var(--accent) !important;
 }
@@ -165,7 +165,7 @@ body {
   z-index: 1;
 }
 }
-.btn.whatsapp{ background: linear-gradient(90deg,#25D366,#1fae4b); color:#04260b; border-radius:12px; padding:8px 10px; }
+.btn.whatsapp{ background: linear-gradient(90deg,#25D366,#1fae4b); color:#04260b; border-radius:8px; padding:8px 10px; }
 
 /* Layout */
 .container{ max-width:1200px; margin:28px auto; padding:0 20px; }
@@ -258,7 +258,7 @@ body {
   height: 400px;
   margin-top: 20px;
   background:linear-gradient(135deg,
-  #1e3c72, #2a5298); 
+  #080f1b, #050b15); 
 }
 
 .promo-banner {
@@ -538,3 +538,6 @@ body {
 main.container {
   padding-top: 130px !important;
 }
+
+.header-actions { display: flex; gap:
+10px; margin-top: 15px ;}
