@@ -1,452 +1,194 @@
-/* style.css - Luxury theme */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-:root{
-  --bg-dark:#4ea53d79;
-  --gold:#c9a34a;
-  --muted:#9aa0a6;
-  --card:#35628f;
-  --white:#f7f7f7;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MENSEI DA MOTORS — YOUR DRIVE, OUR PRIORITY</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="MENSEI DA MOTORS - YOUR DRIVE, OUR PRIORITY">
+  <meta property="og:description" content="Browse 19+ luxury cars. Brand New, Foreign Used & Ghana Used. Kumasi, Ghana">
+  <meta property="og:image" content="https://menseidamotors.github.io/premium-cars/social-preview.png">
+  <meta property="og:url" content="https://menseidamotors.github.io/premium-cars">
+  <meta name="twitter:card" content="summary_large_image">
+  
+</head>
+<body>
+  <div class="page-bg"></div>
 
-/* Background */
-.page-bg{
-  position:fixed; inset:0; z-index:-2;
-  background:
-    radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.02), transparent 10%),
-    radial-gradient(900px 500px at 90% 90%, rgba(160, 148, 148, 0.25), transparent 20%),
-    linear-gradient(180deg, rgb(63, 63, 83) 0%, rgb(58, 58, 71) 40%, rgb(37, 37, 45) 100%),
-    url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=60') center/cover no-repeat;
-  filter: saturate(0.9) contrast(1.05);
-  opacity: 0.95;
-}
-.page-bg::after{
-  content:"";
-  position:absolute; inset:0;
-  background: linear-gradient(90deg, rgba(165, 122, 122, 0.01), rgba(0,0,0,0.02));
-  mix-blend-mode: overlay;
-}
+  <header class="site-header">
+    <div class="brand">
+      <h1>MENSEI DA MOTORS</h1>
+      <p class="motto">YOUR DRIVE, OUR PRIORITY</p>
+    </div>
+    <div class="header-actions">
+      <a class="btn whatsapp" id="whatsapp-link" href="https://wa.me/233591046079" target="_blank" rel="noopener">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /> WhatsApp
+      </a>
 
-/* Typography */
-body{
-  font-family: "Montserrat", Arial, sans-serif;
-  color:var(--white);
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-}
+       <button id="themeToggle" class="theme-btn">🌙</button>
+    
+  </div>
+</header>
 
-/* Header */
-.site-header{
-  display:flex; justify-content:space-between; align-items:center;
-  padding:3.2px 28px; backdrop-filter: blur(6px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-.brand h1{
-  font-family: "Playfair Display", serif;
-  font-size:2.0rem; letter-spacing:1.5px; color:var(--gold);
-}
-.motto{ font-size:1.1rem; color:var(--gold); margin-top:6px; }
+<section class="search-section">
+  <input type="text" id="searchInput" placeholder="Search cars... e.g. Honda, Toyota, SUV" onkeyup="searchCars()">
+</section>
 
-/* Buttons */
-.btn{
-  display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px;
-  border:0; cursor:pointer; text-decoration:none; color:var(--white); font-weight:700;
-}
-.btn img{ width:18px; height:18px; display:inline-block; }
-.btn.primary{ 
-  background: #d32f2f; 
-  color: white; 
-  padding: 14px 32px; 
-  border-radius: 8px; 
-  display: inline-block; 
+<div class="page-big"></div>
 
-  margin-top: 15px; 
-  font-weight: bold;
-  text-decoration: none;
-}
-.promo-banner-section{
-  position: relative;
-  width: 100%;
-  height: 450px; /* this gives space */
-  margin-top: 20px;
-}
-.promo-banner{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.banner-text{ 
-  position: absolute; 
-  top: 40%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  text-align: center; 
-  color: white; 
-  width: 60%;
-  z-index: 2;
-  .promo-banner-section{
-  position: relative;
-}
-.promo-banner-section::after{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 80%;
-  height: 70%;
-  background: rgba(0,0,0,0.4);
-  z-index: 1;
-}
-}
-.btn.whatsapp{ background: linear-gradient(90deg,#25D366,#1fae4b); color:#04260b; border-radius:12px; padding:8px 10px; }
 
-/* Layout */
-.container{ max-width:1200px; margin:28px auto; padding:0 20px; }
+      <button id="open-cart" class="btn primary">Cart <span id="cart-count">0</span></button>
+    </div>
+  </header>
 
-/* Luxury hero */
-.luxury-hero{
-  display:flex; gap:20px; align-items:center; margin-bottom:18px;
-  border-radius:14px; overflow:hidden; position:relative;
-  box-shadow: 0 20px 60px rgba(2,6,23,0.7);
-  border: 1px solid rgba(255,255,255,0.03);
-}
-.luxury-media{ flex:1 1 60%; position:relative; min-height:320px; overflow:hidden; }
-.luxury-media img{ width:100%; height:100%; object-fit:cover; display:block; transform-origin:center; transition:transform .6s ease; }
-.luxury-hero:hover .luxury-media img{ transform: scale(1.03); }
-.luxury-overlay{ position:absolute; inset:0; z-index:3; background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.55)); pointer-events:none; }
-.luxury-content{ flex:0 0 420px; padding:28px; display:flex; flex-direction:column; gap:12px; background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); z-index:4; }
-.badge{ display:inline-block; background:rgba(201,163,74,0.12); color:var(--gold); padding:6px 10px; border-radius:999px; font-weight:800; }
-.luxury-title{ font-family:"Playfair Display", serif; color:var(--gold); font-size:1.35rem; margin-top:6px; }
-.luxury-sub{ color:var(--muted); margin-top:4px; }
-.luxury-ctas{ display:flex; gap:10px; margin-top:8px; }
-.luxury-specs{ display:flex; gap:12px; color:var(--muted); margin-top:12px; font-size:0.95rem; }
+  <main class="container">
+    <section class="luxury-hero" aria-label="Featured luxury car">
 
-/* Hero info */
-.hero{ display:flex; gap:22px; align-items:flex-start; margin-top:8px; }
-.hero-left{ flex:1; }
-.hero-right{ width:320px; display:flex; flex-direction:column; gap:14px; }
-.hero-title{ font-family: "Playfair Display", serif; font-size:1.25rem; color:var(--gold); display:flex; align-items:center; gap:10px; }
-.hero-title span{ color:var(--white); font-weight:700; }
-.icon-inline{ width:28px; margin-left:8px; }
-.hero-sub{ margin-top:12px; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:8px; }
-.flag{ width:36px; margin-left:8px; }
-.swap-icon{ width:22px; margin-left:8px; }
-.swap-note{ color:var(--muted); margin-top:8px; }
+      <div class="luxury-car-img">
+        <img id="featured-car-img"
+             src="featured-luxury.png"
+             alt="Featured luxury car">
+        <div class="luxury-overlay"></div>
+      </div>
+      <div class="luxury-content">
+        <div class="badge">FEATURED</div>
+        <h2 class="luxury-title">HOME OF QUALITY AND AFFORDABLE CARS — Elegance Redefined</h2>
+        <p class="luxury-sub">Impeccable inner and outer condition. Experience luxury, comfort and prestige.</p>
+        <div class="luxury-ctas">
+          <button class="btn primary" id="view-featured">View Details</button>
+          <a class="btn whatsapp" href="https://wa.me/233591046079?text=I'm%20interested%20in%20the%20featured%20HONDA-CIVIC" target="_blank" rel="noopener">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="wa" /> Message Dealer
+          </a>
+        </div>
+        <div class="luxury-specs">
+          <span>Inner & Outer Photos</span>
+          <span>Swap Allowed</span>
+          <span>Contact for Purchase</span>
+        </div>
+      </div>
+    </section>
 
-/* Filters */
-.filters{ display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
-.filters input, .filters select{ padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); color:var(--white); min-width:140px; }
+    <section class="hero">
+      <div class="hero-left">
+        <h2 class="hero-title">WE SELL: <span>BRAND NEW CARS &amp; USED CARS</span>
+          <img class="icon-inline" src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="car icon" />
+        </h2>
 
-/* Contact card & trust */
-.contact-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.03); text-align:center; }
-.contact-card a{ color:var(--gold); font-weight:800; text-decoration:none; }
-.trust{ display:flex; gap:12px; justify-content:space-between; margin-top:6px; }
-.trust-item{ background: rgba(255,255,255,0.02); padding:10px; border-radius:10px; width:100%; text-align:center; border:1px solid rgba(255,255,255,0.02); }
-.trust-item img{ width:36px; margin-bottom:6px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6)); }
+        <h3 class="hero-sub">BOTH <span>GHANA CARS</span> &amp; <span>FOREIGN CARS</span>
 
-/* Cars grid */
-.cars{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:18px; margin-top:22px; }
-.card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:14px; overflow:hidden; box-shadow: 0 10px 30px rgba(2,6,23,0.6); transition: transform .18s ease, box-shadow .18s ease; display:flex; flex-direction:column; border: 1px solid rgba(255,255,255,0.03); }
-.card:hover{ transform: translateY(-8px); box-shadow: 0 22px 60px rgba(2,6,23,0.75); }
-.card-media{ height:170px; overflow:hidden; position:relative; }
-.card-media img{ width:100%; height:100%; object-fit:cover; display:block; transition: transform .25s ease; }
-.card:hover .card-media img{ transform: scale(1.06); }
-.card-body{ padding:14px; display:flex; flex-direction:column; gap:8px; }
-.card-title{ font-weight:700; font-size:1.02rem; color:var(--white); }
-.card-meta{ color:var(--muted); font-size:0.9rem; }
-.card-actions{ margin-top:auto; display:flex; gap:8px; }
+        <h3 class="hero-sub">SWAP IS ALLOWED
+          <img class="swap-icon" src="https://cdn-icons-png.flaticon.com/512/2917/2917242.png" alt="swap icon" />
+        </h3>
+        <p class="swap-note">Swap offers considered — show us what you have and we'll evaluate.</p>
 
-/* Cart panel */
-.cart-panel{ position:fixed; right:18px; bottom:18px; width:340px; max-height:70vh; overflow:auto; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.03); z-index:60; box-shadow: 0 18px 40px rgba(2,6,23,0.6); }
-#cart-items ul{ list-style:none; padding-left:0; }
-.cart-item{ display:flex; justify-content:space-between; align-items:center; gap:8px; padding:8px 0; border-bottom:1px dashed rgba(255,255,255,0.03); }
-.cart-actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px; }
+        <div class="filters">
+          <input id="search" placeholder="Search model or keyword" />
+          <select id="filter-brand"><option value="">All Brands</option></select>
+          <select id="filter-condition">
+            <option value="">All Conditions</option>
+            <option value="Brand New">Brand New</option>
+            <option value="Used">Used</option>
+          </select>
+          <select id="filter-origin">
+            <option value="">All Origins</option>
+            <option value="Ghana">Ghana</option>
+            <option value="Foreign">Foreign</option>
+          </select>
+          <select id="sort-by">
+            <option value="">Sort</option>
+            <option value="name-asc">Name A→Z</option>
+            <option value="name-desc">Name Z→A</option>
+          </select>
+        </div>
+        </select>
+  </div>
 
-/* Modal */
-.modal{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(2,6,23,0.6); z-index:80; opacity:0; pointer-events:none; transition:opacity .18s ease; }
-.modal[aria-hidden="false"]{ opacity:1; pointer-events:auto; }
-.modal-content{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); width:min(920px,96%); max-height:86vh; overflow:auto; border-radius:12px; padding:18px; position:relative; border:1px solid rgba(255,255,255,0.03); }
-.modal-close{ position:absolute; right:12px; top:8px; background:transparent; border:0; font-size:28px; cursor:pointer; color:var(--muted); }
+  <section class="promo-banner-section">
+    <img src="showroom.jpeg" alt="Mensei Da Motors showroom" class="banner-banner">
+      <h1>MENSEI DA MOTORS</h1>
+      <p>Quality Cars. Fair Prices. Trusted in Ghana.</p>
+      <div>
+  </section>
 
-/* Toast */
-.toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:28px; background:#111827; color:#fff; padding:10px 16px; border-radius:8px; opacity:0; pointer-events:none; z-index:90; transition:opacity .18s ease; }
-.toast.show{ opacity:1; pointer-events:auto; }
+      <aside class="hero-right">
+        <div class="contact-card">
+          <p class="contact-line"><img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="phone" /> <strong>CALL/TEXT:</strong> <a href="tel:0591046079">0591046079</a></p>
+          <a class="btn whatsapp large" href="https://wa.me/233591046079" target="_blank" rel="noopener">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /> Message Dealer
+          </a>
+        </div>
 
-/* Footer */
-.site-footer{ text-align:center; padding:18px; color:var(--muted); margin-top:28px; }
-.slogan{ font-weight:700; color:var(--gold); margin-bottom:6px; }
+        <div class="trust">
+          <div class="trust-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="quality" />
+            <p><strong>QUALITY CARS</strong></p>
+          </div>
+          <div class="trust-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="fair" />
+            <p><strong>FAIR PRICES</strong></p>
+          </div>
+          <div class="trust-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="trusted" />
+            <p><strong>TRUSTED DEALER</strong></p>
+          </div>
+        </div>
+      </aside>
+    </section>
 
-/* Responsive */
-@media (max-width:980px){
-  .luxury-hero{ flex-direction:column; }
-  .luxury-content{ width:100%; }
-  .hero{ flex-direction:column; }
-  .hero-right{ width:100%; }
-  .cart-panel{ right:12px; left:12px; width:auto; }
-}
+<section id="car-list" class="car-section">
+  <section class="featured">
+  <h2>🔥 FEATURED DEALS</h2>
+  <p>Our hottest cars this week</p>
+  <div id="featured-grid" class="featured-grid"></div>
+</section>
+  <h2>OUR AVAILABLE CARS</h2>
+  <div class="car-grid"></div>
+</section>
 
-.promo-banner-section {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  margin-top: 20px;
-  background:linear-gradient(135deg,
-  #1e3c72, #2a5298); 
-}
+   <section id="cart" class="cart-panel" aria-live="polite">
+  <div id="cart-items">Your cart is empty.</div>
+  <div class="cart-actions">
+    <button id="checkout" class="btn primary" onclick="checkoutWhatsApp()">Contact Dealer to Purchase</button>
+    <button class="btn clear-btn" onclick="clearCart()">Clear Cart</button>
+  </div>
+</section>
+  </main>
 
-.promo-banner {
-  width: 80%;
-  height: 80%;
-  object-fit: cover;
-  filter: brightness(0.6);
-}
+  <section class="alert-section">
+  <h2>🔔 Get Alerts for New Arrivals</h2>
+  <p>Tell us what you want and we'll WhatsApp you first</p>
+  <form id="alertForm">
+    <input type="text" id="alertBrand" placeholder="Brand: Toyota, Honda..." required>
+    <input type="text" id="alertType" placeholder="Type: SUV, Sedan..." required>
+    <input type="number" id="alertBudget" placeholder="Max Budget: GHC" required>
+    <input type="tel" id="alertWhatsapp" placeholder="Your WhatsApp Number" required>
+    <input type="location" id="alertLocation" placeholder="Location: Kumasi, Accra,Prestea.." required>
+    <button type="submit">Notify Me</button>
+  </form>
+  <p id="alertMsg"></p>
+</section>
 
-.banner-text {
-  position: absolute;
-  top: 40%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: rgb(170, 65, 65);
-  width: 90%;
-  z-index: 2;
-  text-shadow: 2px 2px 8px
-  rgba(0,0,0,0.7);
-}
-.banner-text h1 { font-size: 30px; }
-.btn-primary {
-  background: #d32f2f;
-  color: rgb(82, 205, 44);
-  padding: 12px 30px;
-  border-radius: 5px;
-  text-decoration: none;
-}
-.car-section{ padding: 40px 20px; }
-.car-section h2{ text-align: center; color: white; margin-bottom: 30px; }
-.car-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-.car-card{ background: #222; color: white; border-radius: 12px; padding: 15px; text-align: center; }
-.car-card img{ width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
-.price{ color: #ff4500; font-weight: bold; font-size: 20px; }
+  <footer class="site-footer">
+    <p class="slogan">DRIVE WITH CONFIDENCE</p>
+    <p class="copyright">© MENSEI DA MOTORS</p>
+  </footer>
 
-.car-card{
-  transition: transform 0.3s;
-  cursor: pointer;
-}
-.car-card:hover{
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(255,69,0,0.3);
-}
-.popup{ display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
-.popup-content{ background: #222; margin: 5% auto; padding: 20px; width: 80%; max-width: 600px; border-radius: 12px; color: white; }
-.close{ float: right; font-size: 30px; cursor: pointer; color: white; }
-.close:hover{ color: #ff4500; }
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
 
-.btn.clear-btn{
-  background: #17ad71;
-  color: var(--black);
-  border: 2px solid var(--gold);
-  margin-top: 10px;
-  width: 100%;
-}
-.btn.clear-btn:hover{
-  background: var(--gold);
-  color: var(--white);
-}
+  <div id="toast" class="toast" aria-hidden="true"></div>
 
-.car-card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.6s ease forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.car-card:nth-child(1) { animation-delay: 0.1s; }
-.car-card:nth-child(2) { animation-delay: 0.2s; }
-.car-card:nth-child(3) { animation-delay: 0.3s; }
-.car-card:nth-child(4) { animation-delay: 0.4s; }
-.car-card:nth-child(5) { animation-delay: 0.5s; }
-
-.featured {
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
-  color: white;
-  text-align: center;
-  margin-bottom: 30px;
-  border-radius: 12px;
-}
-
-.featured h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.featured .car-card {
-  border: 2px solid gold;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-}
-:root {
-  --bg: #ffffff;
-  --text: #000000;
-  --card-bg: #f5f5f5;
-  --accent: #000;
-}
-
-body.dark {
-  --bg: #0a0a0a;
-  --text: #ffffff;
-  --card-bg: #1a1a1a;
-  --accent: #ffffff;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  transition: 0.3s ease;
-}
-
-.car-card, .modal-content, .result, .page-bg {
-  background: var(--card-bg);
-  color: var(--text);
-}
-
-.site-header {
-  background: var(--bg);
-}
-
-.theme-btn {
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid var(---text);
-  background: transplant;
-  color: var(--text);
-  font-size: 18px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.theme-btn:hover {
-  background: var(--text);
-  color: var(--bg);
-}
-
-.header-action {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .header-actions {
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
-.search-section {
-  padding: 30px 20px;
-  text-align: center;
-  background: var(--bg);
-}
-
-#searchInput {
-  width: 90%;
-  max-width: 600px;
-  padding: 15px 20px;
-  border-radius: 50px;
-  border: 2px solid var(--text);
-  background: var(--card-bg);
-  color: var(--text);
-  font-size: 16px;
-  outline: none;
-  transition: 0.3s;
-}
-
-#searchInput:focus {
-  border-color: #00ff88;
-  box-shadow: 0 0 15px rgba(0,255,136,0.2);
-}
-
-.car-card.hidden {
-  display: none;
-}
-
-/* ALERT SECTION */
-.alert-section {
-  padding: 60px 20px;
-  text-align: center;
-  background: var(--card-bg);
-  margin-top: 50px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.alert-section h2 { 
-  color: var(--text); 
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-.alert-section p { 
-  color: var(--muted); 
-  margin-bottom: 20px;
-}
-.alert-section form {
-  max-width: 600px;
-  margin: 20px auto;
-  display: grid;
-  gap: 15px;
-}
-
-.alert-section input {
-  padding: 14px 18px;
-  border-radius: 8px;
-  border: 2px solid var(--text);
-  background: var(--bg);
-  color: var(--text);
-  font-size: 16px;
-  outline: none;
-  transition: 0.3s;
-}
-
-.alert-section input:focus {
-  border-color: #00ff88;
-}
-
-.alert-section button {
-  padding: 14px;
-  border-radius: 8px;
-  border: none;
-  background: #00ff88;
-  color: #000;
-  font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.alert-section button:hover {
-  background: #00cc6a;
-  transform: translateY(-2px);
-}
-
-#alertMsg {
-  color: #00ff88;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .alert-section { padding: 40px 15px; }
-}
+  <script src="script.js"></script>
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+    <div id="popup-body"></div>
+  </div>
+</div>
+</body>
+</html>
