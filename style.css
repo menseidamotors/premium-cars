@@ -44,31 +44,32 @@ img {
 
 /* Typography */
 body{
+  margin: 0; padding: 0;
   font-family: "Montserrat", Arial, sans-serif;
   color:var(--white);
-  min-height:100vh;
+  min-height:40vh;
   -webkit-font-smoothing:antialiased;
 }
 
 /* Header */
 .site-header{
   display:flex; justify-content:space-between; align-items:center;
-  padding:3.2px 28px; backdrop-filter: blur(6px);
+  padding:3.2px 20px; backdrop-filter: blur(6px);
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 .site-header {
   position: fixed !important;
   top: 0 !important;
-  left:- 0 !important;
-  width: 100% !important;
+  left: 0 !important;
+  width: 80% !important;
   z-index: 9999 !important;
   background: var(--card) !important;
-  padding: 15px 25px !important;
+  padding:0px 25px !important;
 }
 
 body {
-  padding-top: 400px !important;
+  padding-top: 500px !important;
 }
 
 .search-section {
@@ -536,8 +537,22 @@ body {
 }
 
 main.container {
-  padding-top: 130px !important;
+  padding-top: 80px !important;
 }
 
 .header-actions { display: flex; gap:
 10px; margin-top: 15px ;}
+
+.site-header h1 { margin: 0; 
+font-size: 28px;
+}
+.site-header { padding: 8px 20px !important;}
+.site-header .motto {  font-size: 12px;
+  margin: 3px 0 0 0; }
+
+  @media (max-width: 600px) {
+    .site-header h1 { font-size: 20px; }
+    .site-header .motto { font-size: 10px; }
+    .header-actions { gap: 8px; margin-top:
+    8px; }
+  }
