@@ -578,3 +578,17 @@ font-size: 28px;
     padding-top: 65px !important;
   }
 }
+.created-by {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 8px;
+}
+
+.created-by span {
+  color: #FFD700; /* Gold */
+  font-weight: bold;
+}
+
+body.dark .created-by {
+  color: #777;
+}
