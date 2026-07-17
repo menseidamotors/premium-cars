@@ -152,7 +152,6 @@ const cars = [
 {
     id: "hyundai-elantra-2018",
     name: "HYUNDAI ELANTRA 2018",
-    featured: false,
     description: "Clean and Accident Free",
     status: "New",
     origin: "Foreign",
