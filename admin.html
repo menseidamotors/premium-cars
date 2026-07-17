@@ -1,54 +1,136 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Admin - PRESTEA AUTO DEALS</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; }
-    .admin-box { max-width: 600px; margin: 50px auto; padding: 30px; background:#1a1a1a; border-radius:12px; border: 1px solid #333; }
-    .admin-box h2 { color: #25D366; }
-    .admin-box input, .admin-box textarea { width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none; background:#2a2a2a; color:#fff; }
-    .admin-box button { padding:12px 20px; background:#25D366; border:none; border-radius:8px; cursor:pointer; font-weight:bold; color:#000; }
-    .admin-box button:hover { background:#1ebe5b; }
-  </style>
+<title>MENSEI DA MOTORS - Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{font-family:Arial;padding:20px;background:#0a0a0a;color:#fff;max-width:700px;margin:auto}
+h1{text-align:center;color:#c00}
+h2{color:#ff4500;border-bottom:1px solid #333;padding-bottom:5px}
+.section{background:#1a1a1a;padding:20px;margin:20px 0;border-radius:10px;border:1px solid #333}
+input,select,button,textarea{padding:12px;margin:8px 0;width:100%;box-sizing:border-box;background:#222;color:#fff;border:1px solid #444;border-radius:5px}
+button{background:#c00;color:#fff;border:0;cursor:pointer;font-weight:bold;font-size:16px}
+button:hover{background:#900}
+.btn-copy{background:#007bff;margin-top:5px}
+.btn-copy:hover{background:#0056b3}
+.code-box{background:#000;padding:15px;margin-top:10px;white-space:pre-wrap;word-wrap:break-word;border-radius:5px;border:1px solid #c00;min-height:50px}
+label{font-size:14px;color:#aaa;display:block;margin-top:10px}
+.note{font-size:12px;color:#888}
+.success{color:#0f0;font-size:14px;display:none}
+</style>
 </head>
 <body>
-  <div class="admin-box" id="adminPanel" style="display:none;">
-    <h2>PRESTEA AUTO DEALS - Admin Panel</h2>
-    <p>Change Featured Car</p>
-    
-    <label>Featured Image Filename:</label>
-    <input type="text" id="imgName" placeholder="class-luxury.png">
-    
-    <label>Featured Title:</label>
-    <input type="text" id="title" placeholder="HOME OF QUALITY CARS">
+<div id="login">
+<h1>PRESTEA AUTO DEALS ADMIN</h1>
+<div class="section">
+<h2>Admin Login</h2>
+<input type="password" id="pass" placeholder="Enter Password">
+<button onclick="login()">Login</button>
+</div>
+</div>
 
-    <button onclick="saveChanges()">Save Changes</button>
-    <p style="font-size:12px; margin-top:20px; color:#aaa;">Note: Copy what shows below and paste it into index.html</p>
-    <p id="output" style="background:#000; padding:10px; border-radius:6px; margin-top:10px;"></p>
-  </div>
+<div id="panel" style="display:none">
+<h1>PRESTEA AUTO DEALS ADMIN</h1>
 
-  <script>
-    // YOUR PASSWORD
-    const ADMIN_PASS = "Elizabeth7994"; 
+<div class="section">
+<h2>1. Add New Car</h2>
+<label>Car ID *lowercase with dashes*</label>
+<input id="id" placeholder="mercedes-gle-2024">
+<label>Car Name</label>
+<input id="name" placeholder="MERCEDES GLE 2024">
+<label>Description</label>
+<input id="desc" value="Clean and Accident Free">
+<label>Status</label>
+<select id="status"><option>New</option><option>Used</option></select>
+<label>Origin</label>
+<select id="origin"><option>Foreign</option><option>Local</option></select>
+<label>Image Filename *upload to GitHub first*</label>
+<input id="img" placeholder="mercedes-gle-2024.jpeg">
+<label>Set as Featured Car?</label>
+<select id="featured"><option value="false">No</option><option value="true">Yes</option></select>
+<button onclick="addCar()">Generate Car Code</button>
+<p class="note">Copy this → Paste into script.js cars array</p>
+<div class="code-box" id="carOutput">Click "Generate Car Code" first</div>
+<button class="btn-copy" onclick="copyCode('carOutput')">Copy Car Code</button>
+<span class="success" id="carSuccess">Copied!</span>
+</div>
 
-    let pass = prompt("Enter Admin Password for PRESTEA AUTO DEALS");
-    if(pass === ADMIN_PASS) {
-      document.getElementById("adminPanel").style.display = "block";
-    } else {
-      alert("Wrong Password");
-      window.location = "index.html"; // kick them to homepage
-    }
+<div class="section">
+<h2>2. Change Featured Car</h2>
+<label>To make a car featured, use "Add New Car" above and select "Yes"</label>
+<p class="note">Remember: Only 1 car should have featured: true. Set others to false</p>
+</div>
 
-    function saveChanges() {
-      let img = document.getElementById("imgName").value;
-      let title = document.getElementById("title").value;
-      document.getElementById("output").innerText = 
-`Change in index.html:
-Line 48: <img id="class-car-img" src="${img}" alt="Featured luxury car">
-Line 54: <h2>${title}</h2>`;
-    }
-  </script>
+<div class="section">
+<h2>3. Contact Numbers</h2>
+<label>WhatsApp Number *with country code*</label>
+<input id="siteWa" placeholder="23324...">
+<button onclick="changeWa()">Generate WhatsApp Code</button>
+<label>Phone Number</label>
+<input id="sitePhone" placeholder="024...">
+<button onclick="changePhone()">Generate Phone Code</button>
+<p class="note">Copy this → Paste at top of script.js</p>
+<div class="code-box" id="contactOutput">Click buttons above first</div>
+<button class="btn-copy" onclick="copyCode('contactOutput')">Copy Contact Code</button>
+<span class="success" id="contactSuccess">Copied!</span>
+</div>
+
+</div>
+
+<script>
+const PASSWORD = 'Elizabeth7994';
+function login(){
+  if(document.getElementById('pass').value===PASSWORD){
+    document.getElementById('login').style.display='none';
+    document.getElementById('panel').style.display='block';
+  }else{alert('Wrong Password')}
+}
+
+function addCar(){
+  let id=document.getElementById('id').value;
+  let name=document.getElementById('name').value;
+  let desc=document.getElementById('desc').value;
+  let status=document.getElementById('status').value;
+  let origin=document.getElementById('origin').value;
+  let img=document.getElementById('img').value;
+  let featured=document.getElementById('featured').value;
+  
+  let code = `,
+{
+    id: "${id}",
+    name: "${name}",
+    featured: ${featured},
+    description: "${desc}",
+    status: "${status}",
+    origin: "${origin}",
+    image: ["${img}"]
+  }`;
+  
+  document.getElementById('carOutput').innerText = code;
+}
+
+function changeWa(){
+  let num=document.getElementById('siteWa').value;
+  let code = `const SITE_WHATSAPP = "${num}";`;
+  document.getElementById('contactOutput').innerText = code;
+}
+
+function changePhone(){
+  let num=document.getElementById('sitePhone').value;
+  let code = `const SITE_PHONE = "${num}";`;
+  let current = document.getElementById('contactOutput').innerText;
+  document.getElementById('contactOutput').innerText = current + '\n' + code;
+}
+
+function copyCode(id){
+  let text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    let successId = id === 'carOutput' ? 'carSuccess' : 'contactSuccess';
+    document.getElementById(successId).style.display = 'inline';
+    setTimeout(() => {document.getElementById(successId).style.display = 'none'}, 2000);
+  });
+}
+</script>
 </body>
 </html>
