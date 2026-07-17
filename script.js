@@ -156,7 +156,7 @@ const cars = [
     description: "Clean and Accident Free",
     status: "New",
     origin: "Foreign",
-    image: ["Hyundai Elantra 2018.png"]
+    image: ["Hyundai Elantra 2018.jpeg"]
   }
  ];
 
