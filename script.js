@@ -147,16 +147,14 @@ const cars = [
     status: "Used",
     origin: "Ghana",
     image: ["Toyota Vitz.jpeg"]
-    }
-  ,
-{
-    id: "hyundai-elantra-2018",
-    name: "HYUNDAI ELANTRA 2018",
-    description: "Clean and Accident Free",
+    },
+    { id: "hyundai elantra 2018", 
+    name: "HYUNDAI ELEANTRA 2018",
+    description:"Clean and Accident Free",
     status: "New",
     origin: "Foreign",
     image: ["Hyundai Elantra 2018.jpeg"]
-  }
+  },
  ];
 
 function loadFeatured() {
