@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - PRESTEA AUTO DEALS</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; }
+    .admin-box { max-width: 600px; margin: 50px auto; padding: 30px; background:#1a1a1a; border-radius:12px; border: 1px solid #333; }
+    .admin-box h2 { color: #25D366; }
+    .admin-box input, .admin-box textarea { width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none; background:#2a2a2a; color:#fff; }
+    .admin-box button { padding:12px 20px; background:#25D366; border:none; border-radius:8px; cursor:pointer; font-weight:bold; color:#000; }
+    .admin-box button:hover { background:#1ebe5b; }
+  </style>
+</head>
+<body>
+  <div class="admin-box" id="adminPanel" style="display:none;">
+    <h2>PRESTEA AUTO DEALS - Admin Panel</h2>
+    <p>Change Featured Car</p>
+    
+    <label>Featured Image Filename:</label>
+    <input type="text" id="imgName" placeholder="class-luxury.png">
+    
+    <label>Featured Title:</label>
+    <input type="text" id="title" placeholder="HOME OF QUALITY CARS">
+
+    <button onclick="saveChanges()">Save Changes</button>
+    <p style="font-size:12px; margin-top:20px; color:#aaa;">Note: Copy what shows below and paste it into index.html</p>
+    <p id="output" style="background:#000; padding:10px; border-radius:6px; margin-top:10px;"></p>
+  </div>
+
+  <script>
+    // YOUR PASSWORD
+    const ADMIN_PASS = "Elizabeth7994"; 
+
+    let pass = prompt("Enter Admin Password for PRESTEA AUTO DEALS");
+    if(pass === ADMIN_PASS) {
+      document.getElementById("adminPanel").style.display = "block";
+    } else {
+      alert("Wrong Password");
+      window.location = "index.html"; // kick them to homepage
+    }
+
+    function saveChanges() {
+      let img = document.getElementById("imgName").value;
+      let title = document.getElementById("title").value;
+      document.getElementById("output").innerText = 
+`Change in index.html:
+Line 48: <img id="class-car-img" src="${img}" alt="Featured luxury car">
+Line 54: <h2>${title}</h2>`;
+    }
+  </script>
+</body>
+</html>
